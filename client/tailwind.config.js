@@ -8,6 +8,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+        playfair: ["Playfair Display", "serif"],
+      },
       colors: {
         // Light theme colors
         light: {

@@ -22,11 +22,13 @@ export default function CreatePost() {
 
     const data = new FormData();
     data.append("file", file);
-    data.append("upload_preset", "blogapp");
-    data.append("cloud_name", "dnewix37g");
+    data.append("upload_preset", import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
+    data.append("cloud_name", import.meta.env.VITE_CLOUDINARY_CLOUD_NAME);
 
     const res = await fetch(
-      "https://api.cloudinary.com/v1_1/dnewix37g/image/upload",
+      `https://api.cloudinary.com/v1_1/${
+        import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
+      }/image/upload`,
       {
         method: "POST",
         body: data,
@@ -99,20 +101,23 @@ export default function CreatePost() {
   };
 
   // Quill Modules to handle custom image button
-  const modules = useMemo(() => ({
-    toolbar: {
-      container: [
-        [{ header: [1, 2, 3, false] }],
-        ["bold", "italic", "underline"],
-        [{ list: "ordered" }, { list: "bullet" }],
-        ["link", "image"], // Image button
-        ["clean"],
-      ],
-      handlers: {
-        image: handleImageInsert, // Attach custom image handler
+  const modules = useMemo(
+    () => ({
+      toolbar: {
+        container: [
+          [{ header: [1, 2, 3, false] }],
+          ["bold", "italic", "underline"],
+          [{ list: "ordered" }, { list: "bullet" }],
+          ["link", "image"], // Image button
+          ["clean"],
+        ],
+        handlers: {
+          image: handleImageInsert, // Attach custom image handler
+        },
       },
-    },
-  }), []);
+    }),
+    []
+  );
 
   return (
     <div className="p-3 max-w-3xl mx-auto min-h-screen">
@@ -125,9 +130,15 @@ export default function CreatePost() {
             required
             id="title"
             className="flex-1"
-            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, title: e.target.value })
+            }
           />
-          <select onChange={(e) => setFormData({ ...formData, category: e.target.value })}>
+          <select
+            onChange={(e) =>
+              setFormData({ ...formData, category: e.target.value })
+            }
+          >
             <option value="uncategorized">Select a category</option>
             <option value="tech">Tech</option>
             <option value="history">History</option>
@@ -187,7 +198,11 @@ export default function CreatePost() {
           Publish
         </Button>
 
-        {publishError && <Alert className="mt-5" color='failure'>{publishError}</Alert>}
+        {publishError && (
+          <Alert className="mt-5" color="failure">
+            {publishError}
+          </Alert>
+        )}
       </form>
     </div>
   );

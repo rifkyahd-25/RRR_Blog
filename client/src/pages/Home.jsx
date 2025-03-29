@@ -1,9 +1,7 @@
-
-
 import { Spinner } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import PostCard from "../components/PostCard";
+
 import Homecard from "../components/Homecard";
 
 export default function Home() {
