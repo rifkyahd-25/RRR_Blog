@@ -2,13 +2,7 @@ import bcryptjs from "bcryptjs";
 import { errorHandler } from "../utils/error.js";
 import User from "../models/user.model.js";
 
-export const signout = (req, res, next) => {
-  try {
-    res.clearCookie("access_token").status(200).json("Signout successful");
-  } catch (error) {
-    next(error);
-  }
-};
+
 
 export const deleteUser = async (req, res, next) => {
   if (!req.user.isAdmin && req.user.id !== req.params.userId) {
@@ -122,6 +116,17 @@ export const getUser = async (req, res, next) => {
     }
     const { password, ...rest } = user._doc;
     res.status(200).json(rest);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const signout = (req, res, next) => {
+  try {
+    res
+    .clearCookie("access_token")
+    .status(200)
+    .json("Signout successful");
   } catch (error) {
     next(error);
   }

@@ -18,6 +18,7 @@ export const create = async (req, res, next) => {
     ...req.body,
     slug,
     userId: req.user.id,
+    author: req.user.id,
   });
 
   try {
@@ -36,6 +37,7 @@ export const getposts = async (req, res, next) => {
     const sortDirection = req.query.order === "asc" ? 1 : -1;
     const posts = await Post.find({
       ...(req.query.userId && { userId: req.query.userId }),
+      ...(req.query.author && { author: req.query.author }),
       ...(req.query.category && { category: req.query.category }),
       ...(req.query.slug && { slug: req.query.slug }),
       ...(req.query.postId && { _id: req.query.postId }),
@@ -46,6 +48,7 @@ export const getposts = async (req, res, next) => {
         ],
       }),
     })
+    .populate("author", "username profilePicture")
       .sort({ updatedAt: sortDirection })
       .skip(startIndex)
       .limit(limit);
