@@ -13,6 +13,7 @@ export default function CreatePost() {
   const [formData, setFormData] = useState({});
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [publishError, setPublishError] = useState(null);
+  const [imageFileUrlQuill, setImageFileUrlQuill] = useState(null);
   const quillRef = useRef(null); // For Quill reference
   const navigate = useNavigate();
 
@@ -76,11 +77,13 @@ export default function CreatePost() {
     // Upload the image to Cloudinary
     const data = new FormData();
     data.append("file", file);
-    data.append("upload_preset", "blogapp");
-    data.append("cloud_name", "dnewix37g");
+    data.append("upload_preset", import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
+    data.append("cloud_name", import.meta.env.VITE_CLOUDINARY_CLOUD_NAME);
 
     const res = await fetch(
-      "https://api.cloudinary.com/v1_1/dnewix37g/image/upload",
+      `https://api.cloudinary.com/v1_1/${
+        import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
+      }/image/upload`,
       {
         method: "POST",
         body: data,
@@ -92,23 +95,47 @@ export default function CreatePost() {
     }
 
     const uploadImageUrl = await res.json();
-    const imageUrl = uploadImageUrl.url;
+    setImageFileUrlQuill(uploadImageUrl.url);
+    console.log("Image URL from Cloudinary:", imageFileUrlQuill);
 
     // Get the Quill editor instance and current cursor position
+    // const quill = quillRef.current.getEditor();
+    // const range = quill.getSelection();
+    // quill.insert(range.index, "image", imageFileUrlQuill);
     const quill = quillRef.current.getEditor();
-    const range = quill.getSelection();
-    quill.insertEmbed(range.index, "image", imageUrl);
+    // const range = quill.getSelection();
+    quill.insert( "image", imageFileUrlQuill);
   };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
   // Quill Modules to handle custom image button
   const modules = useMemo(
     () => ({
       toolbar: {
         container: [
-          [{ header: [1, 2, 3, false] }],
-          ["bold", "italic", "underline"],
+          [{ header: "1" }, { header: "2" }, { font: [] }],
           [{ list: "ordered" }, { list: "bullet" }],
-          ["link", "image"], // Image button
+          ["bold", "italic", "underline", "strike"],
+          ["string", "image"],
+          [{ align: [] }],
+          [{ color: [] }, { background: [] }],
+          ["blockquote", "code-block"],
+          [{ indent: "-1" }, { indent: "+1" }],
+          [{ direction: "rtl" }],
           ["clean"],
         ],
         handlers: {

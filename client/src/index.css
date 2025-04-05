@@ -23,6 +23,13 @@ body {
     /* Adjust this size as needed */
     font-weight: bold;
 }
+.post-content img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    clear: both; /* Ensure images don't float under text */
+  }
 
 
 .post-content h1 {

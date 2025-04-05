@@ -57,7 +57,18 @@ const handleSubmit = (e) => {
 
   return (
     <Navbar className="border-b-2 ">
-      <Link
+     <Link
+  to="/"
+  className="flex items-center gap-3 text-lg sm:text-2xl font-semibold dark:text-dark-text text-gray-800"
+>
+  <span className="px-4 py-1.5 bg-gradient-to-r from-light-primary to-light-link rounded-xl text-white text-base sm:text-lg shadow-md">
+    RRR
+  </span>
+  <span className="text-base sm:text-xl">Blog</span>
+</Link>
+
+
+      {/* <Link
         to="/"
         className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-dark-text"
       >
@@ -65,7 +76,7 @@ const handleSubmit = (e) => {
           RRR
         </span>
         Blog
-      </Link>
+      </Link> */}
       <form onSubmit={handleSubmit}>
         <TextInput
           type="text"
