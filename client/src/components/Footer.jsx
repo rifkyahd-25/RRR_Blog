@@ -7,14 +7,14 @@ export default function FooterCom() {
       <div className='w-full max-w-7xl mx-auto'>
         <div className='grid w-full justify-between sm:flex md:grid-cols-1'>
           <div className='mt-5'>
-            <Link
-              to='/'
-              className='self-center whitespace-nowrap text-lg sm:text-xl font-semibold dark:text-white'
+             <Link
+              to="/"
+              className="flex items-center gap-1 text-lg sm:text-2xl font-semibold dark:text-dark-text text-gray-800"
             >
-              <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>
-                Rifky
+              <span className="px-4 py-1.5 bg-gradient-to-r from-light-primary to-light-link rounded-xl text-white text-base sm:text-lg shadow-md">
+                RRR
               </span>
-              Blog
+              <span className="text-base sm:text-xl">Blog</span>
             </Link>
           </div>
           <div className='grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3 sm:gap-6'>
@@ -35,8 +35,8 @@ export default function FooterCom() {
             <div>
               <Footer.Title title='Legal' />
               <Footer.LinkGroup col>
-                <Footer.Link href='#'>Privacy Policy</Footer.Link>
-                <Footer.Link href='#'>Terms &amp; Conditions</Footer.Link>
+                <Footer.Link href='/privecy'>Privacy Policy</Footer.Link>
+                <Footer.Link href='/termsandcondition'>Terms &amp; Conditions</Footer.Link>
               </Footer.LinkGroup>
             </div>
           </div>

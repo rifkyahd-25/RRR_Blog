@@ -59,7 +59,7 @@ const handleSubmit = (e) => {
     <Navbar className="border-b-2 ">
      <Link
   to="/"
-  className="flex items-center gap-3 text-lg sm:text-2xl font-semibold dark:text-dark-text text-gray-800"
+  className="flex items-center gap-1 text-lg sm:text-2xl font-semibold dark:text-dark-text text-gray-800"
 >
   <span className="px-4 py-1.5 bg-gradient-to-r from-light-primary to-light-link rounded-xl text-white text-base sm:text-lg shadow-md">
     RRR
@@ -136,7 +136,7 @@ const handleSubmit = (e) => {
           <Link to="/about">About</Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/projects"} as={"div"}>
-          <Link to="/projects">Projects</Link>
+          <Link to="/contact">Contact</Link>
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
