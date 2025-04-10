@@ -19,6 +19,8 @@ import TermsConditions from "./pages/TermsConditions";
 import Contact from "./pages/Contact";
 
 function App() {
+
+
   return (
     <BrowserRouter>
     <ScrollToTop/>
