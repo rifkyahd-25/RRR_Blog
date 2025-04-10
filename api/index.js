@@ -7,7 +7,7 @@ import postRoutes from './routes/post.route.js'
 import commentRoutes from './routes/comment.route.js'
 import cookieParser from "cookie-parser";
 import path from 'path'
-const port = process.env.PORT || 4000;
+
 dotenv.config();
 
 mongoose
@@ -26,9 +26,9 @@ const app = express();
 app.use(express.json({ limit: "50mb" })); 
 app.use(cookieParser());
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
