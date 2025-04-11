@@ -19,17 +19,21 @@ body {
 
 }
 
-.post-content h2, .post-content h3, .post-content h4 {
+.post-content h2,
+.post-content h3,
+.post-content h4 {
     /* Adjust this size as needed */
     font-weight: bold;
 }
+
 .post-content img {
     display: block;
     max-width: 100%;
     height: auto;
     margin: 20px 0;
-    clear: both; /* Ensure images don't float under text */
-  }
+    clear: both;
+    /* Ensure images don't float under text */
+}
 
 
 .post-content h1 {
@@ -62,24 +66,26 @@ body {
 .post-content ol {
     margin-left: 20px;
     padding-left: 20px;
-    
+
 }
 
-.post-content ul li ,
-.post-content ol li  {
+.post-content ul li,
+.post-content ol li {
     font-size: 1rem;
-    
+
     margin-bottom: 10px;
     position: relative;
     padding-left: 25px;
 }
-.post-content ul li::before ,
-.post-content ol li::before  {
+
+.post-content ul li::before,
+.post-content ol li::before {
     content: '✔';
     position: absolute;
     left: 0;
     top: 0;
-    color: #ff8181; /* Light blue color */
+    color: #ff8181;
+    /* Light blue color */
     font-size: 1.2rem;
 }
 
@@ -91,4 +97,3 @@ body {
     margin: 20px 0;
 
 }
-
