@@ -63,7 +63,7 @@ export default function Home() {
                   alt="Featured"
                   className="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover"
                   loading="lazy"
-                  srcSet={`${post.image}?w=320&f_auto&q_auto 320w, ${post.image}?w=640&f_auto&q_auto 640w, ${post.image}?w=1280&f_auto&q_auto 1280w`}
+                  
                   
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
