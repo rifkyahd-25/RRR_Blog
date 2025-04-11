@@ -18,8 +18,8 @@ export default function Home() {
 
         // Fetch both the post and recent posts in parallel
         const [postRes, recentPostsRes] = await Promise.all([
-          fetch(`/api/post/getposts?limit=1&order=desc`),
-          fetch("/api/post/getposts?limit=6"),
+          fetch(`/api/post/getall?limit=1&order=desc`),
+          fetch("/api/post/getall?limit=6"),
         ]);
 
         const postData = await postRes.json();
@@ -53,15 +53,18 @@ export default function Home() {
 
   return (
     <>
-      {post && (
+       {post && (
         <Link to={`/post/${post.slug}`}>
           <div className="flex justify-center pt-10 px-4">
             <div className="relative max-w-3xl w-full bg-gradient-to-r from-blue-600 to-blue-400 text-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="relative">
-                <img
-                  src={post.image}
+              <img
+                  src={`${post.image}?f_auto&q_auto`}
                   alt="Featured"
                   className="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover"
+                  loading="lazy"
+                  srcSet={`${post.image}?w=320&f_auto&q_auto 320w, ${post.image}?w=640&f_auto&q_auto 640w, ${post.image}?w=1280&f_auto&q_auto 1280w`}
+                  
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-40"></div>
               </div>
@@ -95,7 +98,7 @@ export default function Home() {
             </div>
           </div>
         </Link>
-      )}
+      )} 
 
       <h3 className="text-2xl font-bold mt-12 text-center text-gray-900 dark:text-white">
         Popular Posts

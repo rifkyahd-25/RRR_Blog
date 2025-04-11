@@ -8,10 +8,11 @@ export default function Homecard({ post }) {
       {/* Image */}
       <div className="relative">
       
-        <img
-          src={post.image}
+      <img
+          src={`${post.image}?f_auto&q_auto`}
           alt='post cover'
           className="w-full h-56 object-cover  group-hover:h-[200px] transition-all duration-300 z-20"
+          loading="lazy"
         />
        
         <div className="absolute inset-0 bg-black bg-opacity-30"></div>
