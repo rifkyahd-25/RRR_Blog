@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import CommentSection from "../components/CommentSection";
 import PostCard from "../components/PostCard";
 import ShareButtons from "../components/ShareButtons ";
+import AdsterraAd from "../components/AdsterraAd ";
 
 export default function Postpage() {
   const { postSlug } = useParams();
@@ -99,6 +100,7 @@ export default function Postpage() {
       <div className="max-w-4xl mx-auto w-full">{/* <CallToAction /> */}</div>
       <div className="max-w-4xl mx-auto w-full"></div>
       <CommentSection postId={post._id} />
+      <AdsterraAd/>
       <div className="flex flex-col justify-center items-center mb-5">
         <h1 className="text-xl mt-5">Recent articles</h1>
         <div className="flex flex-wrap gap-5 mt-5 justify-center">
