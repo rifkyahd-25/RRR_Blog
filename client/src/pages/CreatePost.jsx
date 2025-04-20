@@ -130,7 +130,7 @@ export default function CreatePost() {
           [{ header: "1" }, { header: "2" }, { font: [] }],
           [{ list: "ordered" }, { list: "bullet" }],
           ["bold", "italic", "underline", "strike"],
-          ["string", "image"],
+          ["link", "image"],
           [{ align: [] }],
           [{ color: [] }, { background: [] }],
           ["blockquote", "code-block"],
